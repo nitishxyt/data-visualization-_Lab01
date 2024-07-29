@@ -1,0 +1,95 @@
+#Hi! Lets create a real life example  involving weather data . Use NumPy to analyze temperature data of a week , perform slicing ,indexing ,shaping and reshaping operations and calculate various statics.
+Sure, let's create a real-life example involving weather data using NumPy. We'll simulate temperature data for a week and perform various operations on it.
+
+### Example: Analyzing Weekly Temperature Data Using NumPy
+
+```python
+import numpy as np
+
+# Simulate weekly temperature data (in Celsius)
+temperature_data = np.array([20, 21, 22, 23, 24, 25, 26])
+
+# Perform slicing to analyze specific days
+print("Temperature on Tuesday:", temperature_data[1])  # Indexing starts from 0
+print("Temperature from Wednesday to Friday:", temperature_data[2:5])  # Slicing
+
+# Reshape the array for different views (e.g., morning vs. afternoon temperatures)
+temperature_data_reshape = temperature_data.reshape(2, 3)  # Reshape into 2 rows, 3 columns
+print("\nReshaped temperature data:")
+print(temperature_data_reshape)
+
+# Calculate statistics
+mean_temperature = np.mean(temperature_data)
+max_temperature = np.max(temperature_data)
+min_temperature = np.min(temperature_data)
+temperature_range = np.ptp(temperature_data)  # Peak to peak (max - min)
+
+print("\nStatistics:")
+print("Mean temperature:", mean_temperature)
+print("Max temperature:", max_temperature)
+print("Min temperature:", min_temperature)
+print("Temperature range:", temperature_range)
+
+# Indexing with boolean arrays (e.g., days with temperature above a certain threshold)
+threshold = 23
+above_threshold = temperature_data > threshold
+print("\nDays with temperature above", threshold, "degrees:")
+print(np.arange(7)[above_threshold])  # Returns indices of days above threshold
+
+# Example of reshaping for a different view
+temperature_data_reshape = temperature_data.reshape(7, 1)  # Reshape into 7 rows, 1 column
+print("\nTemperature data reshaped for a different view:")
+print(temperature_data_reshape)
+```
+
+### Explanation:
+
+1. **Simulating Weekly Temperature Data:**
+   - We create a NumPy array `temperature_data` representing temperatures from Monday to Sunday (e.g., [20, 21, 22, 23, 24, 25, 26]).
+
+2. **Slicing and Indexing:**
+   - We demonstrate indexing to access specific days (e.g., Tuesday's temperature) and slicing to access a range of days (e.g., Wednesday to Friday).
+
+3. **Reshaping Operations:**
+   - We reshape the array into different views using `reshape()`. In our example, we reshape it into a 2x3 matrix (`temperature_data_reshape`) and a 7x1 matrix (`temperature_data_reshape`).
+
+4. **Calculating Statistics:**
+   - We calculate basic statistics such as mean, maximum, minimum, and range of temperatures using NumPy functions (`np.mean()`, `np.max()`, `np.min()`, `np.ptp()`).
+
+5. **Boolean Indexing:**
+   - We use boolean indexing to find which days have temperatures above a certain threshold (`threshold = 23`).
+
+### Output:
+
+After running the provided code, you would see outputs such as:
+
+```
+Temperature on Tuesday: 21
+Temperature from Wednesday to Friday: [22 23 24]
+
+Reshaped temperature data:
+[[20 21 22]
+ [23 24 25]]
+
+Statistics:
+Mean temperature: 23.0
+Max temperature: 26
+Min temperature: 20
+Temperature range: 6
+
+Days with temperature above 23 degrees:
+[4 5 6]
+
+Temperature data reshaped for a different view:
+[[20]
+ [21]
+ [22]
+ [23]
+ [24]
+ [25]
+ [26]]
+```
+
+### Summary:
+
+This example demonstrates how NumPy can be used to handle and analyze temperature data effectively, performing operations like slicing, indexing, reshaping, and calculating statistics. Such operations are fundamental in analyzing and understanding weather data in various scientific and practical applications.
